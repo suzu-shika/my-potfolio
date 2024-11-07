@@ -1,0 +1,620 @@
+---
+import Layout from '../layouts/Layout.astro';
+import KV from '../components/KV.astro';
+import Button from '../components/Button.astro';
+import TitleLevel2 from '../components/TitleLevel2.astro';
+import WorkSlider from '../components/WorkSlider.astro';
+---
+
+<!-- top -->
+<Layout
+  subTitle="ポートフォリオサイト"
+  ogType="website"
+  description="埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで事業を加速します。"
+>
+  <!-- top-kv -->
+  <div class="top-kv">
+    <KV />
+  </div><!-- /.top-kv -->
+
+  <main>
+    <!-- top-about -->
+    <section class="top-about">
+      <div class="l-container">
+        <div class="l-section l-section--top-about">
+          <div class="top-about__title">
+            <TitleLevel2 titleJapanese="すずしかについて" titleEnglish="About" />
+          </div><!-- /.top-about__title -->
+          <div class="top-about__content l-section-body">
+            <p class="top-about__text">見えないところまで丁寧にこだわり<br>どんなユーザーにとっても心地よい<br>あなたの理想を形にするサイト制作</p>
+            <div class="top-about__button">
+              <Button buttonLink="/about" buttonText="もっと見る" />
+            </div><!-- /.top-about__button -->
+          </div><!-- /.top-about__content.l-section-body -->
+        </div><!-- /.l-section -->
+      </div><!-- /.l-container -->
+    </section><!-- /.top-about -->
+
+    <!-- top-skills -->
+    <section class="top-skills" id="skills">
+      <div class="l-container">
+        <div class="l-section">
+          <div class="top-skills__title">
+            <TitleLevel2 titleJapanese="スキル" titleEnglish="Skills" />
+          </div><!-- /.top-skills__title -->
+          <div class="top-skills__content l-section-body">
+            <div class="top-skills__list">
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--html">
+                  <img src="/public/assets/images/skills/icon-skills-html@2x.webp" alt="HTML" width="60" height="75" loading="lazy" decoding="async">
+                </h3>
+                <p class="top-skills__text">HTMLは、Webページを作成するための基本的な言語で、テキストや画像などのコンテンツを構造化し、Webブラウザに表示する方法を指定します。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--css">
+                  <img src="/public/assets/images/skills/icon-skills-css@2x.webp" alt="CSS" width="60" height="75" loading="lazy" decoding="async">
+                </h3>
+                <p class="top-skills__text">CSSは、Webページの見た目やレイアウトを制御するための言語で、コンテンツのスタイルやデザインを指定します。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--js">
+                  <img src="/public/assets/images/skills/icon-skills-js@2x.webp" alt="JavaScript" width="60" height="75" loading="lazy" decoding="async">
+                </h3>
+                <p class="top-skills__text">JavaScriptは、Webページをより動的にするためのプログラミング言語で、アニメーションやユーザーとのインタラクション、データの検証や処理などを実現できます。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--wp">
+                  <picture>
+                    <source media="(max-width: 767px)" srcset="/public/assets/images/skills/icon-skills-wp-sp@2x.webp">
+                    <source media="(min-width: 768px)" srcset="/public/assets/images/skills/icon-skills-wp-pc@2x.webp">
+                    <img src="/public/assets/images/skills/icon-skills-wp-sp@2x.webp" alt="WordPress" width="60" height="60" loading="lazy" decoding="async">
+                  </picture>
+                </h3>
+                <p class="top-skills__text">WordPressは、Webサイトを構築するためのツールで、コンピューターコードを書くことなく、テンプレートやプラグインを使ってWebサイトを作成することができます。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--astro">
+                  <img src="/public/assets/images/skills/icon-skills-astro@2x.webp" alt="Astro.js" width="80" height="80" loading="lazy" decoding="async">
+                </h3>
+                <p class="top-skills__text">Astro.jsは、コンテンツの表示が高速でSEOやユーザビリティに優れたWebサイトの制作が可能な、静的サイトジェネレータです。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--micro-cms">
+                  <picture>
+                    <source media="(max-width: 767px)" srcset="/public/assets/images/skills/icon-skills-micro-cms-sp@2x.webp">
+                    <source media="(min-width: 768px)" srcset="/public/assets/images/skills/icon-skills-micro-cms-pc@2x.webp">
+                    <img src="/public/assets/images/skills/icon-skills-micro-cms-sp@2x.webp" alt="microCMS" width="60" height="60" loading="lazy" decoding="async">
+                  </picture>
+                </h3>
+                <p class="top-skills__text">microCMSは、APIベースでコンテンツ管理が行える日本製のヘッドレスCMSで、Astroと組み合わせることで高速で利便性の高いブログサイトを実現できます。</p>
+              </section><!-- /.top-skills__item -->
+              <section class="top-skills__item top-skills__item--marketing">
+                <h3 class="top-skills__title-level3 top-skills__title-level3--marketing">マーケ<br class="u-no-pc">ティング<br class="u-no-pc">支援</h3>
+                <p class="top-skills__text">Googleアナリティクス、Googleサーチコンソール、ヒートマップなどのツールを用いたSEO対策やLP改善施策(ABテスト含む)、GBP運用をサポートします。</p>
+              </section><!-- /.top-skills__item -->
+            </div><!-- /.top-skills__list -->
+          </div><!-- /.top-skills__content.l-section-body -->
+        </div><!-- /.l-section -->
+      </div><!-- /.l-container -->
+    </section><!-- /.top-skills -->
+
+    <!-- top-work -->
+    <section class="top-work">
+      <div class="top-work-container">
+        <div class="l-section">
+          <div class="top-work__title">
+            <TitleLevel2 titleJapanese="制作実績" titleEnglish="Work" />
+          </div><!-- /.top-skills__title -->
+          <div class="top-work__content l-section-body">
+            <div class="top-work__slider">
+              <WorkSlider />
+            </div><!-- /.top-work__slider -->
+            <div class="top-work__button">
+              <Button buttonLink="/work/1" buttonText="制作実績をもっと見る" />
+            </div><!-- /.top-work__button -->
+          </div><!-- /.top-work__content.l-section-body -->
+        </div><!-- /.l-section -->
+      </div><!-- /.top-work-container -->
+    </section><!-- /.top-work -->
+
+    <!-- top-workflow -->
+    <section class="top-workflow" id="workflow">
+      <div class="l-container">
+        <div class="l-section">
+          <div class="top-workflow__title">
+            <TitleLevel2 titleJapanese="制作の流れ" titleEnglish="Workflow" />
+          </div><!-- /.top-workflow__title -->
+          <div class="top-workflow__content l-section-body">
+            <section class="top-workflow__section">
+              <h3 class="top-workflow__title-level3">Webサイト制作</h3>
+              <ol class="top-workflow__list">
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-contact"><span class="u-sr-only">ステップ1</span>お問い合わせ</h4>
+                  <p class="top-workflow__text">
+                    <span>まずはお気軽にお問い合わせください。</span>
+                    <span>必要に応じて、対面またはオンラインでヒアリングいたします。</span>
+                  </p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-contract"><span class="u-sr-only">ステップ2</span>ご契約</h4>
+                  <p class="top-workflow__text">
+                    <span>見積書・仕様確認書を事前に提示し、正式発注を承ります。</span>
+                    <span>制作費の全額または前金(着手金)をご入金いただきます。</span></p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-hearing"><span class="u-sr-only">ステップ3</span>ライターヒアリング</h4>
+                  <p class="top-workflow__text">原稿作成にあたり1~2時間程度ヒアリングいたします。</p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-design"><span class="u-sr-only">ステップ4</span>原稿・デザイン</h4>
+                  <p class="top-workflow__text">
+                    <span>ヒアリング内容に基づき原稿・デザインを作成いたします。</span>
+                    <span>進捗状況はこまめに報告いたします。ご不明点は随時ご相談ください。</span>
+                  </p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-coding"><span class="u-sr-only">ステップ5</span>コーディング</h4>
+                  <p class="top-workflow__text">
+                    <span>原稿・デザインの完成後、コーディングに入ります。</span>
+                    <span>進捗状況はこまめに報告いたします。ご不明点は随時ご相談ください。</span>
+                  </p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-confirmation"><span class="u-sr-only">ステップ6</span>最終確認・修正</h4>
+                  <p class="top-workflow__text">制作物をご確認いただき、修正を行います。</p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-delivery"><span class="u-sr-only">ステップ7</span>納品</h4>
+                  <p class="top-workflow__text">すべての工程が完了しましたら、残金がある場合は残金をご入金いただきます。</p>
+                </li>
+              </ol>
+            </section><!-- /.top-workflow__section -->
+            <section class="top-workflow__section">
+              <h3 class="top-workflow__title-level3">コーディング代行</h3>
+              <ol class="top-workflow__list">
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-contact"><span class="u-sr-only">ステップ1</span>お問い合わせ</h4>
+                  <p class="top-workflow__text">
+                    <span>まずはお気軽にお問い合わせください。</span>
+                    <span>必要に応じて、対面またはオンラインでヒアリングいたします。</span>
+                  </p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-contract"><span class="u-sr-only">ステップ2</span>ご契約</h4>
+                  <p class="top-workflow__text">
+                    <span>見積書・仕様確認書を事前に提示し、正式発注を承ります。</span>
+                    <span>制作費の全額または前金(着手金)のご入金と、デザインデータを送付いただきます。</span>
+                  </p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-coding"><span class="u-sr-only">ステップ3</span>コーディング</h4>
+                  <p class="top-workflow__text">進捗状況はこまめに報告いたします。ご不明点は随時ご相談ください。</p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-confirmation"><span class="u-sr-only">ステップ4</span>初稿提出・修正</h4>
+                  <p class="top-workflow__text">制作物をご確認いただき、修正を行います。</p>
+                </li>
+                <li class="top-workflow__item">
+                  <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-delivery"><span class="u-sr-only">ステップ5</span>納品</h4>
+                  <p class="top-workflow__text">すべての工程が完了しましたら、残金がある場合は残金をご入金いただきます。</p>
+                </li>
+              </ol>
+            </section><!-- /.top-workflow__section -->
+          </div><!-- /.top-workflow__content.l-section-body -->
+        </div><!-- /.l-section -->
+      </div><!-- /.l-container -->
+    </section><!-- /.top-workflow -->
+
+    <!-- top-priceVoice -->
+    <section class="top-priceVoice">
+      <div class="l-container">
+        <div class="l-section l-section--top-priceVoice">
+          <div class="top-priceVoice__title">
+            <TitleLevel2 titleJapanese="料金/お客様の声" titleEnglish="Price / Voice" />
+          </div><!-- /.top-priceVoice__title -->
+          <div class="top-priceVoice__content l-section-body">
+            <div class="top-priceVoice__item">
+              <p class="top-priceVoice__text">料金表はあくまでも目安となります。<br>お見積もりでは、ご予算やサイトの仕様に応じて柔軟なご提案をさせていただきます。お気軽にご相談ください。</p>
+              <div class="top-priceVoice__button">
+                <Button buttonLink="/price-voice#price" buttonText="料金表を見る" />
+              </div><!-- /.top-priceVoice__button -->
+            </div><!-- /.top-priceVoice__item -->
+            <div class="top-priceVoice__item">
+              <p class="top-priceVoice__text">これまでご依頼いただいたお客様や、Webサイト制作の協業者様から寄せられた声をご紹介します。お仕事のご依頼を検討される際の参考にご覧ください。</p>
+              <div class="top-priceVoice__button">
+                <Button buttonLink="/price-voice#voice" buttonText="お客様の声を見る" />
+              </div><!-- /.top-priceVoice__button -->
+            </div><!-- /.top-priceVoice__item -->
+          </div><!-- /.top-priceVoice__content.l-section-body -->
+        </div><!-- /.l-section -->
+      </div><!-- /.l-container -->
+    </section><!-- /.top-priceVoice -->
+  </main>
+
+</Layout>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* page > top > top-about
+  ----------------------------------- */
+  .top-about__text {
+    padding-left: 0.15em;
+    font-size: min(16px, calc(16 var(--vw-sp)));
+    letter-spacing: 0.15em;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .top-about__button {
+    margin-top: 43px;
+  }
+
+  @include mq() {
+    .top-about {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: max(-94px, calc(-94 var(--vw-pc)));
+        right: 0;
+        width: min(502px, calc(502 var(--vw-pc)));
+        height: min(697.5px, calc(697.5 var(--vw-pc)));
+        background-image: url(/public/assets/images/global/bg-symbol-circle-pc@2x.webp);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+    }
+
+    .top-about__content {
+      width: 371px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .top-about__text {
+      font-size: 20px;
+    }
+
+    .top-about__button {
+      margin-top: 43px;
+    }
+  }
+
+  /* page > top > top-skills
+  ----------------------------------- */
+  .top-skills__list {
+    display: flex;
+    flex-direction: column;
+    gap: min(56px, calc(40 var(--vw-sp)));
+  }
+
+  .top-skills__item {
+    display: flex;
+    align-items: center;
+    gap: calc(20 var(--vw-sp));
+
+    &--marketing {
+      display: none;
+    }
+  }
+
+  .top-skills__title-level3 {
+    flex: 0 0 min(100px, calc(60 var(--vw-sp)));
+
+    &--marketing {
+      font-size: min(18px, calc(14 var(--vw-sp)));
+      font-weight: 900;
+      text-align: center;
+    }
+  }
+
+  .top-skills__text {
+    flex: 1 1 auto;
+    text-align: justify;
+  }
+
+  @include mq() {
+    .top-skills__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: clamp(64px, calc(83 var(--vw-pc)), 83px) 0;
+    }
+
+    .top-skills__item {
+      flex: 0 0 clamp(180px, calc(280 var(--vw-pc)), 280px);
+      flex-direction: column;
+      gap: 47px;
+    }
+
+    .top-skills__title-level3 {
+      position: relative;
+      flex: initial;
+      display: grid;
+      place-items: center;
+      height: 98px;
+
+      &--html,
+      &--css,
+      &--js img {
+        width: 60px;
+      }
+
+      &--wp img {
+        width: 180px;
+      }
+
+      &--astro img {
+        width: 80px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -19px;
+        left: 50%;
+        translate: -50%;
+        width: 80px;
+        height: 1px;
+        background-color: currentColor;
+      }
+    }
+
+    .top-skills__title-level3--micro-cms img {
+      width: 160px;
+    }
+
+    .top-skills__title-level3--marketing {
+      font-size: 20px;
+    }
+
+    .top-skills__text {
+      flex: initial;
+    }
+  }
+
+  /* page > top > top-work
+  ----------------------------------- */
+  .top-work-container {
+    width: min(500px, calc(350 var(--vw-sp)));
+    margin: auto;
+  }
+
+  .top-work__button {
+    padding-right: 25px;
+    margin-top: 100px;
+  }
+
+  @media screen and (min-width: 930px) {
+    .top-work-container {
+      width: calc(1100px + 80px * 2);
+      padding: 0 80px;
+      width: min(calc(1100px + 80px * 2), calc(calc(1110 var(--vw-pc)) + calc(80 var(--vw-pc)) * 2));
+      padding: 0 min(80px, calc(80 var(--vw-pc)));
+    }
+
+    .top-work__button {
+      padding-right: 50px;
+    }
+  }
+
+  /* page > top > top-workflow
+  ----------------------------------- */
+  .top-workflow__content {
+    display: grid;
+    gap: 80px;
+  }
+
+  .top-workflow__section {
+    max-width: 360px;
+    margin: auto;
+  }
+
+  .top-workflow__title-level3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    font-size: 20px;
+    font-weight: 700;
+
+    &::after {
+      content: "";
+      width: 80px;
+      height: 1px;
+      background-color: #3d2202;
+    }
+  }
+
+  .top-workflow__list {
+    margin-top: 40px;
+  }
+
+  .top-workflow__item {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    margin-top: 47px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -26px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 13px;
+      height: 7px;
+      background-image: url(/public/assets/images/flow/icon-flow-arrow@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+
+  .top-workflow__title-level4 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 700;
+
+    &::before {
+      content: "";
+      width: 28px;
+      height: 28px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+
+    &--coding-contact::before {
+      background-image: url(/public/assets/images/flow/icon-flow-contact-yel@2x.webp);
+    }
+
+    &--coding-contract::before {
+      background-image: url(/public/assets/images/flow/icon-flow-contract-yel@2x.webp);
+    }
+
+    &--coding-coding::before {
+      background-image: url(/public/assets/images/flow/icon-flow-coding-yel@2x.webp);
+    }
+
+    &--coding-confirmation::before {
+      background-image: url(/public/assets/images/flow/icon-flow-confirmation-yel@2x.webp);
+    }
+
+    &--coding-delivery::before {
+      background-image: url(/public/assets/images/flow/icon-flow-delivery-yel@2x.webp);
+    }
+
+    &--website-contact::before {
+      background-image: url(/public/assets/images/flow/icon-flow-contact-grn@2x.webp);
+    }
+
+    &--website-contract::before {
+      background-image: url(/public/assets/images/flow/icon-flow-contract-grn@2x.webp);
+    }
+
+    &--website-hearing::before {
+      background-image: url(/public/assets/images/flow/icon-flow-interview@2x.webp);
+    }
+
+    &--website-design::before {
+      background-image: url(/public/assets/images/flow/icon-flow-design@2x.webp);
+    }
+
+    &--website-coding::before {
+      background-image: url(/public/assets/images/flow/icon-flow-coding-grn@2x.webp);
+    }
+
+    &--website-confirmation::before {
+      background-image: url(/public/assets/images/flow/icon-flow-confirmation-grn@2x.webp);
+    }
+
+    &--website-delivery::before {
+      background-image: url(/public/assets/images/flow/icon-flow-delivery-grn@2x.webp);
+    }
+  }
+
+  .top-workflow__text {
+    display: grid;
+    gap: 10px;
+    padding-left: 48px;
+    text-align: justify;
+  }
+
+  @include mq() {
+    .top-workflow__content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: min(120px, calc(120 var(--vw-pc)));
+      padding: 0 min(80px, calc(80 var(--vw-pc)));
+    }
+
+    .top-workflow__section {
+      margin: 0;
+    }
+
+    .top-workflow__title-level3 {
+      font-size: 24px;
+    }
+
+    .top-workflow__item {
+      margin-top: 52px;
+
+      &::after {
+        bottom: -31px;
+        width: calc(13px * 1.5);
+        height: calc(7px * 1.5);
+      }
+    }
+  }
+
+  /* page > top > top-priceVoice
+  ----------------------------------- */
+  .top-priceVoice__content {
+    display: grid;
+    gap: 80px;
+  }
+
+  .top-priceVoice__text {
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-align: justify;
+  }
+
+  .top-priceVoice__button {
+    margin-top: 40px;
+  }
+
+  @include mq() {
+    .top-priceVoice {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: max(-130px, calc(-130 / 849 * 100vw));
+        left: 0;
+        width: min(250px, calc(250 / 849 * 100vw));
+        height: min(356px, calc(356 / 849 * 100vw));
+        background-image: url(/public/assets/images/global/bg-symbol-pentagon-pc@2x.webp);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+
+      @media screen and (min-width: 850px) {
+        &::after {
+          bottom: max(-346px, calc(-346 var(--vw-pc)));
+          left: 0;
+          width: min(490px, calc(490 var(--vw-pc)));
+          height: min(697.5px, calc(697.5 var(--vw-pc)));
+        }
+      }
+    }
+
+    .top-priceVoice__content {
+      gap: 80px;
+    }
+
+    .top-priceVoice__item {
+      max-width: 480px;
+      margin: auto;
+    }
+
+    .top-priceVoice__text {
+      font-size: 20px;
+    }
+
+    .top-priceVoice__button {
+      margin-top: 40px;
+    }
+  }
+</style>

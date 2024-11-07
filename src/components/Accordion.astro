@@ -1,0 +1,355 @@
+---
+// microCMS呼び出し
+import { getVoices } from '../library/microcms';
+const responseVoice = await getVoices({ fields: ["id", "name", "post", "image", "alt_txt", "hp", "twitter", "facebook", "instagram", "excerpt", "impression", "point", "recommendation", "opposition", "message", "order"] });
+
+// orderフィールドに基づいてソートする（昇順に並べる）
+const sortedContentsSp = responseVoice.contents.sort((a, b) => a.order - b.order);
+---
+
+<div class="c-accordion">
+  <ul class="c-accordion__list">
+    {responseVoice.contents.map((content) => {
+      return (
+      <li class="c-accordion__item">
+        <div class="c-accordion__title" data-is-open="false">
+          <div class="c-accordion__title-head">
+            <div class="c-accordion__title-icon">
+              <img src={content.image.url} alt={content.alt_text} loading="lazy" decoding="async" width="140" height="140">
+            </div><!-- /.c-accordion__title-icon -->
+            <ul class="c-accordion__title-link">
+              <li>
+                <a href={content.hp} target="_blank">
+                  <img src="/public/assets/images/global/icon-laptop.svg" alt="Webサイト / ポートフォリオサイト" loading="lazy" decoding="async" width="20" height="20">
+                </a>
+              </li>
+              <li lang="en">
+                <a href={content.twitter} target="_blank">
+                  <img src="/public/assets/images/global/icon-x.svg" alt="X(Twitter)" loading="lazy" decoding="async" width="20" height="19">
+                </a>
+              </li>
+              <li lang="en">
+                <a href={content.facebook} target="_blank">
+                  <img src="/public/assets/images/global/icon-facebook.svg" alt="Facebook" loading="lazy" decoding="async" width="20" height="20">
+                </a>
+              </li>
+              <li lang="en">
+                <a href={content.instagram} target="_blank">
+                  <img src={"/public/assets/images/global/icon-instagram.svg"} alt="Inatagram" loading="lazy" decoding="async" width="20" height="20">
+                </a>
+              </li>
+            </ul><!-- /.c-accordion__title-link -->
+          </div><!-- /.c-accordion__title-head -->
+          <h3 class="c-accordion__title-text">
+            <span>{content.post}</span><span>{content.name}<span class="c-accordion__title-honorific">さん</span></span>
+          </h3>
+          <p class="c-accordion__title-lead">{content.excerpt}</p>
+          <div class="c-accordion-title__icon"></div>
+        </div><!-- /.c-accordion__title -->
+        <div class="c-accordion__inner">
+          <dl class="c-accordion__content">
+            <dt>すずしかの印象はいかがでしたか？</dt>
+            <dd set:html={content.impression}></dd>
+            <dt>すずしかのおすすめポイントは？</dt>
+            <dd set:html={content.point}></dd>
+            <dt>どのような人にすずしかをおすすめしますか？</dt>
+            <dd set:html={content.recommendation}></dd>
+            <dt>すずしかをおすすめしない人はどんな人？</dt>
+            <dd set:html={content.opposition}></dd>
+            <dt>すずしかに依頼を検討されている方へ一言</dt>
+            <dd set:html={content.message}></dd>
+          </dl><!-- /.c-accordion__content -->
+        </div><!-- /.c-accordion__inner -->
+        <div class="c-accordion__button">
+          <button type="button">詳細を表示</button>
+        </div><!-- /.c-accordion__button -->
+      </li>
+      );
+    })}
+  </ul>
+</div><!-- /.c-accordion -->
+
+<script>
+  // accordion menu
+  const labels = document.querySelectorAll('.c-accordion__item');
+
+  labels.forEach((label) => {
+    const button = label.querySelector('.c-accordion__button button');
+    const itemInner = label.querySelector('.c-accordion__inner');
+    const content = itemInner.children[0];
+    const targetHeight = content.offsetHeight;
+
+    // ボタンのクリックイベントを追加
+    button.addEventListener('click', function (event) {
+      const isOpen = label.dataset.isOpen === 'true';
+
+      if (isOpen) {
+        itemInner.style.height = targetHeight + 'px';
+        setTimeout(() => {
+          itemInner.style.height = 0;
+          label.dataset.isOpen = 'false';
+          button.textContent = '詳細を表示';
+          button.classList.remove('is-open');
+          button.classList.remove('rotate-arrow'); // 回転アニメーションを解除
+          button.style.backgroundColor = ''; // 背景色を元に戻す
+        }, 1);
+      } else {
+        itemInner.style.height = targetHeight + 'px';
+        setTimeout(() => {
+          itemInner.style.height = 'auto';
+          label.dataset.isOpen = 'true';
+          button.textContent = '詳細を閉じる';
+          button.classList.add('is-open');
+          button.classList.add('rotate-arrow'); // 回転アニメーションを追加
+          button.style.backgroundColor = '#004225'; // 背景色を変更
+        }, 500);
+      }
+    });
+  });
+
+  // リンクのhrefが空やnullの場合に、リンクを無効化する
+  const links = document.querySelectorAll('.c-accordion__title-link a');
+
+  links.forEach(link => {
+    if (!link.href || link.href === 'null' || link.href === 'undefined') {
+      link.classList.add('is-disabled'); // クラスを追加
+      link.setAttribute('aria-disabled', 'true'); // アクセシビリティ対応
+      link.removeAttribute('href'); // hrefを削除してリンクを無効化
+    }
+  });
+</script>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-accordion
+  ----------------------------------- */
+  .c-accordion__item {
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: var(--color-base);
+
+    &:not(:first-child) {
+      margin-top: 130px;
+    }
+  }
+
+  .c-accordion__title {
+    padding: 20px 17px 20px 25px;
+  }
+
+  .c-accordion__title-head {
+    position: relative;
+  }
+
+  .c-accordion__title-icon {
+    position: absolute;
+    top: -70px;
+    left: -10px;
+    display: grid;
+    place-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--color-base);
+
+    img {
+      width: 80px;
+      border-radius: 50%;
+    }
+  }
+
+  .c-accordion__title-link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    a {
+      padding: 8px;
+
+      &.is-disabled {
+        pointer-events: none; // クリックを無効化
+        opacity: 0.3; // 見た目で無効とわかるようにする
+        cursor: default;
+      }
+
+      img {
+        width: 20px;
+        filter: invert(26%) sepia(6%) saturate(7%) hue-rotate(72deg) brightness(101%) contrast(87%);
+        transition: filter 0.3s;
+      }
+    }
+  }
+
+  .c-accordion__title-text {
+    display: flex;
+    gap: 0.25em;
+    margin-top: 20px;
+    font-size: min(20px, calc(20 var(--vw-sp)));
+    font-weight: 700;
+  }
+
+  .c-accordion__title-honorific {
+    margin-left: 0.3em;
+    font-size: min(14px, calc(14 var(--vw-sp)));
+  }
+
+  .c-accordion__title-lead {
+    margin-top: 20px;
+    font-family: var(--font-family-handwritten);
+    font-size: min(20px, calc(20 var(--vw-sp)));
+    font-weight: 600;
+    text-align: justify;
+    line-height: 1.6;
+  }
+
+  .c-accordion__inner {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      translate: -50%;
+      width: 11px;
+      height: 7px;
+      background-image: url(/public/assets/images/price-voice/icon-price-voice-triangle-black@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+
+  .c-accordion__content {
+    padding: 0 25px 20px;
+    margin-top: 42px;
+    text-align: justify;
+
+    dt {
+      font-size: 16px;
+
+      &:not(:first-of-type) {
+        margin-top: 40px;
+      }
+    }
+
+    dd {
+      margin-top: 10px;
+      line-height: 2;
+    }
+  }
+
+  .c-accordion__button {
+    text-align: center;
+
+    button {
+      position: relative;
+      display: inline-block;
+      width: 160px;
+      padding: 6px 0;
+      border-radius: 4px;
+      background-color: var(--color-yellow);
+      color: var(--color-base);
+      line-height: 1.429;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        width: 11px;
+        height: 7px;
+        background-image: url(/public/assets/images/price-voice/icon-price-voice-triangle-white@2x.webp);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        transition: transform 0.3s ease;
+      }
+
+      // アイコンの回転アニメーション
+      &.rotate-arrow::after {
+        top: 45%;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // アコーディオンの開閉アニメーション
+  .c-accordion__title.is-open .c-accordion-title__icon::after {
+    opacity: 0;
+  }
+
+  .c-accordion__inner {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  @include mq() {
+    .c-accordion__item {
+      &:not(:first-child) {
+        margin-top: 172px;
+      }
+    }
+
+    .c-accordion__title {
+      padding: 0 67px 20px 75px;
+    }
+
+    .c-accordion__title-icon {
+      top: -90px;
+      left: -34px;
+      width: 180px;
+      height: 180px;
+
+      img {
+        width: 140px;
+      }
+    }
+
+    .c-accordion__title-link {
+      transform: translateY(26px);
+
+      a {
+        // PC表示・ホバー
+        &:hover img {
+          filter: invert(87%) sepia(10%) saturate(460%) hue-rotate(17deg) brightness(80%) contrast(87%);
+        }
+      }
+    }
+
+    .c-accordion__title-text {
+      margin: 2px 0 0 154px;
+    }
+
+    .c-accordion__title-lead {
+      margin-top: 40px;
+    }
+
+    .c-accordion__content {
+      padding: 0 75px 20px;
+
+      dt {
+        font-size: 20px;
+      }
+
+      dd {
+        font-size: 16px;
+      }
+    }
+
+    .c-accordion__button {
+      button {
+        transition: opacity 0.3s, filter 0.3s;
+
+        &:hover {
+          opacity: 0.75;
+          filter: brightness(80%) contrast(130%);
+        }
+      }
+    }
+  }
+</style>

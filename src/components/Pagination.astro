@@ -1,0 +1,51 @@
+---
+const { page } = Astro.props;
+---
+
+<!-- c-pagination -->
+<nav class="c-pagination">
+  {page.currentPage > 1 && (
+    <a href={`/work/${page.currentPage - 1}`} class="c-pagination__link" aria-label="前のページ">&lt;</a>
+  )}
+  {Array.from({ length: page.lastPage }, (_, i) => (
+    <a
+      href={`/work/${i + 1}`}
+      class={`c-pagination__link ${page.currentPage === i + 1 ? 'active' : ''}`}
+    >
+      {i + 1}
+    </a>
+  ))}
+  {page.currentPage < page.lastPage && (
+    <a href={`/work/${page.currentPage + 1}`} class="c-pagination__link" aria-label="次のページ">&gt;</a>
+  )}
+</nav>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-pagination
+  ----------------------------------- */
+  .c-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .c-pagination__link {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid currentColor;
+    font-weight: 700;
+    transition: background-color 0.3s;
+
+    &.active {
+      background-color: var(--color-accent);
+    }
+
+    &:hover {
+      background-color: var(--color-accent);
+    }
+  }
+</style>

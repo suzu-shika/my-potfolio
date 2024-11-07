@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TitleLevel1 from '../components/TitleLevel1.astro';
+import Form from '../components/Form.astro';
+
+const noContact = true;
+---
+
+<!-- contact -->
+<Layout subTitle="お問い合わせ"
+  ogType="website"
+  description="埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）へのお問い合わせはこちらからどうぞ。相談は無料で承っております。"
+  {noContact}
+>
+  <main class="contact-main">
+    <div class="contact-heading">
+      <TitleLevel1 titleJapanese="お問い合わせ" titleEnglish="Contact" />
+    </div><!-- contact-heading -->
+
+    <!-- contact-form -->
+    <div class="contact-form">
+      <div class="l-container">
+        <div class="l-section-body">
+          <Form />
+        </div><!-- /.l-section-body -->
+      </div><!-- /.l-container -->
+    </div><!-- /.contact-form -->
+  </main>
+</Layout>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  .contact-main {
+    padding-bottom: 120px;
+    margin-top: 131px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  @include mq() {
+    .contact-main {
+      padding-bottom: 200px;
+      margin-top: 140px;
+    }
+  }
+
+  /* page > contact > contact-form
+  ----------------------------------- */
+  @include mq() {
+    .contact-form {
+      max-width: 800px;
+      margin: auto;
+    }
+  }
+</style>

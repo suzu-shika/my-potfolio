@@ -1,0 +1,57 @@
+---
+const { buttonLink, buttonText } = Astro.props;
+---
+
+<div class="c-button">
+  <a href={buttonLink}>{buttonText}</a>
+</div><!-- /.c-button -->
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-button
+  ----------------------------------- */
+  .c-button {
+    text-align: right;
+
+    & a {
+      position: relative;
+      padding: 8px 0;
+      letter-spacing: 0.15em;
+    }
+
+    & a::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -65px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 1px;
+      background-color: var(--color-main);
+    }
+  }
+
+  @include mq() {
+    .c-button {
+      a {
+        padding: 8px 0 8px 8px;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+
+      a::before {
+        width: 0;
+        left: 0 ;
+        height: 1px;
+        background-color: var(--color-main);
+        transition: all 0.3s ease;
+      }
+
+      a:hover::before {
+        left: -65px;
+        width: 65px;
+      }
+    }
+  }
+</style>

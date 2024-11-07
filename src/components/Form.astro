@@ -1,0 +1,328 @@
+<form id="contactForm" class="c-form" action="https://ssgform.com/s/H2zBiH5biqHA" method="post" novalidate>
+  <div style="display: none;" aria-hidden="true">
+    <input type="text" name="wana">
+  </div>
+  <div class="c-form__text">
+    <label for="name">お名前<span class="c-form__required"><span>*</span>必須</span></label>
+    <input type="text" id="name" name="お名前" required>
+    <p class="c-form__error-message" id="nameError">お名前を入力してください。</p>
+  </div><!-- /.c-form__text -->
+
+  <div class="c-form__text">
+    <label for="email">メールアドレス<span class="c-form__required"><span>*</span>必須</span></label>
+    <input type="email" id="email" name="メールアドレス" required>
+    <p class="c-form__error-message" id="emailError">有効なメールアドレスを入力してください。</p>
+  </div><!-- /.c-form__text -->
+
+  <div class="c-form__checkbox">
+    <fieldset>
+      <legend>お問い合わせの種類（複数選択可）</legend>
+      <label>
+        <input type="checkbox" name="問い合わせ種別" value="制作のご依頼">
+        <span class="c-form__checkbox-name">
+          <span class="c-form__checkbox-text">制作のご依頼</span>
+        </span>
+      </label>
+      <label>
+        <input type="checkbox" name="問い合わせ種別" value="無料相談のお申し込み">
+        <span class="c-form__checkbox-name">
+          <span class="c-form__checkbox-text">無料相談のお申し込み</span>
+        </span>
+      </label>
+      <label>
+        <input type="checkbox" name="問い合わせ種別" value="お見積もり">
+        <span class="c-form__checkbox-name">
+          <span class="c-form__checkbox-text">お見積もり</span>
+        </span>
+      </label>
+      <label>
+        <input type="checkbox" name="問い合わせ種別" value="コーディング代行">
+        <span class="c-form__checkbox-name">
+          <span class="c-form__checkbox-text">Webサイト制作</span>
+        </span>
+      </label>
+      <label>
+        <input type="checkbox" name="問い合わせ種別" value="Webサイトまるっと制作">
+        <span class="c-form__checkbox-name">
+          <span class="c-form__checkbox-text">コーディング代行のみ</span>
+        </span>
+      </label>
+    </fieldset>
+  </div><!-- /.c-form__checkbox -->
+
+  <div class="c-form__textarea">
+    <label for="message">お問い合わせ内容<span class="c-form__required"><span>*</span>必須</span></label>
+    <textarea id="message" name="お問い合わせ内容" required></textarea>
+    <p class="c-form__error-message" id="messageError">お問い合わせ内容を入力してください。</p>
+  </div><!-- /.c-form__textarea -->
+
+  <div class="c-form__privacy">
+    <p class="c-form__privacy-head"><strong>個人情報に関する注意事項</strong></p>
+    <p class="c-form__privacy-text">
+      お客様からお預かりした個人情報は、ご依頼に関するやり取りにのみ使用いたします。また、お預かりした個人情報は適切に管理し、次のいずれかに該当する場合を除き個人情報を第三者に提供しません。
+      <span class="c-form__privacy-list">
+        <span>お客様の同意がある場合</span>
+        <span>法令に基づき開示することが必要である場合</span>
+      </span>
+    </p>
+  </div><!-- c-form__privacy -->
+
+  <div class="c-form__checkbox c-form__checkbox--privacy">
+    <label>
+      <input type="checkbox" id="agreement" name="同意" required>
+      <span class="c-form__checkbox-name">
+        <span class="c-form__checkbox-text">上記の注意事項を確認しました。</span>
+      </span>
+    </label>
+    <p class="c-form__error-message" id="agreementError">個人情報の取り扱いに同意する場合は、<br>チェックを入れてください。</p>
+  </div><!-- /.c-form__checkbox -->
+
+  <div class="c-form__sebmit-button">
+    <button type="submit" disabled>送信する</button>
+  </div><!-- /.c-form__sebmit-button -->
+</form>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-form
+  ----------------------------------- */
+  .c-form {
+    display: grid;
+    gap: 40px;
+    font-size: 16px;
+  }
+
+  .c-form__required {
+    margin-left: 1em;
+    font-size: 12px;
+
+    span {
+      color: #ff0000;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: none;
+    box-shadow: 0 0 0 1px var(--color-main) inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: var(--color-white);
+    line-height: 1.5;
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px rgb(33 150 243) inset;
+    }
+  }
+
+  textarea {
+    height: 300px;
+  }
+
+  // 個人情報に関する注意事項
+  .c-form__privacy-head {
+    strong {
+      padding-bottom: 4px;
+      border-bottom: 1px solid currentColor;
+      font-weight: 400;
+    }
+  }
+
+  .c-form__privacy-text {
+    margin-top: 14px;
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  .c-form__privacy-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+
+    span {
+      position: relative;
+      padding-left: 1em;
+
+      &:before {
+        content: "・";
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  // チェックボックス
+  .c-form__checkbox {
+    fieldset label {
+      display: block;
+      margin-top: 6px;
+
+      &:first-of-type {
+        margin-top: 10px;
+      }
+    }
+
+    &--privacy {
+      width: fit-content;
+      margin: auto;
+    }
+
+    input {
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      margin: -1px;
+    }
+  }
+
+  .c-form__checkbox-name {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+
+    .c-form__checkbox--privacy & {
+      font-size: 15px;
+
+      @media screen and (min-width: 340px) {
+        font-size: 16px;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 1em;
+      height: 1em;
+      border: 1px solid currentColor;
+      margin: 4.5px 10px 0 0;
+      flex-shrink: 0;
+      background-color: var(--color-white);
+    }
+
+    .c-form__checkbox input:checked + &::before {
+      border: 1px solid rgb(33 150 243);
+      background-color: currentColor;
+    }
+
+    .c-form__checkbox input:checked + &::after {
+      content: "";
+      position: absolute;
+      left: 0.33em;
+      top: 0.1em;
+      bottom: 0;
+      transform: translateY(-1px) rotate(45deg);
+      width: 0.4em;
+      height: 0.65em;
+      border: solid var(--color-white);
+      border-width: 0 2px 2px 0;
+      margin: auto;
+    }
+
+    .c-form__checkbox input:focus-visible + & .c-form__checkbox-text {
+      background: linear-gradient(transparent 90%, rgba(33, 150, 243, 0.3) 90%);
+    }
+  }
+
+  // 送信ボタン
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    margin: auto;
+    font-size: 18px;
+    font-weight: 700;
+    // color: var(--color-white);
+    background-color: var(--color-yellow);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+
+    &:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+  }
+
+  // バリデーション用テキスト
+  .c-form__error-message {
+    color: #ff0000;
+    font-size: 12px;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  @include mq() {
+    button[type="submit"] {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+</style>
+
+<script>
+  // 必須項目と同意のバリデーション
+  const form = document.getElementById('contactForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+  const agreementCheckbox = document.getElementById('agreement');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  const nameError = document.getElementById('nameError');
+  const emailError = document.getElementById('emailError');
+  const messageError = document.getElementById('messageError');
+  const agreementError = document.getElementById('agreementError');
+
+  function validate() {
+    // 名前のバリデーション
+    nameError.classList.toggle('active', nameInput.value.trim() === '');
+    // メールアドレスのバリデーション
+    emailError.classList.toggle('active', !emailInput.validity.valid);
+    // メッセージのバリデーション
+    messageError.classList.toggle('active', messageInput.value.trim() === '');
+    // 同意チェックボックスのバリデーション
+    agreementError.classList.toggle('active', !agreementCheckbox.checked);
+
+    // すべての必須項目が有効なら送信ボタンを有効にする
+    const isFormValid =
+        nameInput.value.trim() !== '' &&
+        emailInput.validity.valid &&
+        messageInput.value.trim() !== '' &&
+        agreementCheckbox.checked;
+    submitButton.disabled = !isFormValid;
+  }
+
+  // イベントリスナーを追加してリアルタイムでバリデーション
+  nameInput.addEventListener('input', validate);
+  emailInput.addEventListener('input', validate);
+  messageInput.addEventListener('input', validate);
+  agreementCheckbox.addEventListener('change', validate);
+
+  // フォーム送信前の最終確認
+  form.addEventListener('submit', function(event) {
+    validate();
+    if (submitButton.disabled) {
+        event.preventDefault();
+    }
+  });
+</script>

@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const noContact = true;
+const noIndex = true;
+---
+
+<!-- notFound -->
+<Layout
+  subTitle="404エラーページ"
+  ogType="website"
+  description="指定されたページは存在しません。トップページにお戻りください。"
+  {noIndex}
+  {noContact}
+>
+  <main class="notFound-main">
+    <div class="notFound-heading">
+      <!-- src/components/TitleLevel1.astroを流用 -->
+      <div class="c-title">
+        <h1 class="c-title__ja u-uppercase" aria-label="お探しのページは見つかりませんでした">Not Found</h1>
+        <span class="c-title__en">404</span>
+      </div><!-- /.c-title -->
+    </div><!-- notFound-heading -->
+    <div class="l-section-body">
+      <div class="notFound-description">
+        <p class="notFound-text">お探しのページは<br>見つかりませんでした。</p>
+        <p class="notFound-text">アクセスいただいたページは<br>変更もしくは消去された<br>可能性があります。</p>
+      </div><!-- /.notFound-description -->
+    </div><!-- /.l-section-body -->
+    <div class="notFound-button">
+      <a href="/" class="l-contact__button l-contact__button--footer l-contact__button--404">トップに戻る</a>
+    </div><!-- /.notFound-button -->
+  </main>
+</Layout>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  .notFound-main {
+    padding-bottom: 120px;
+    margin-top: 131px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .notFound-description {
+    display: grid;
+    gap: 10px;
+    padding-left: 0.15em;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-align: center;
+  }
+
+  .notFound-button {
+    margin-top: 80px;
+  }
+
+  .l-contact__button--404 {
+    padding-top: 12px;
+    padding-bottom: 13px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 16px;
+  }
+
+  @include mq() {
+    .notFound-main {
+      padding-bottom: 200px;
+      margin-top: 150px;
+    }
+
+    .notFound-description {
+      font-size: 20px;
+
+      br {
+        display: none;
+      }
+    }
+
+    .notFound-button {
+      margin-top: 120px;
+    }
+
+    .l-contact__button--404 {
+      font-size: 20px;
+    }
+  }
+
+  /* component > c-title
+  ----------------------------------- */
+  .c-title {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  .c-title__ja {
+    padding-left: 0.5em;
+    font-size: 20px;
+    letter-spacing: 0.5em;
+
+    &--contact {
+      color: var(--color-base);
+    }
+  }
+
+  .c-title__en {
+    color: var(--color-accent);
+    font-size: 40px;
+  }
+
+  @include mq() {
+    .c-title__ja {
+      font-size: 24px;
+    }
+
+    .c-title__en {
+      font-size: 80px;
+    }
+  }
+</style>

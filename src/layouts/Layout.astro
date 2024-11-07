@@ -1,0 +1,653 @@
+---
+import "../styles/style.scss";
+import HeaderNav from "../components/HeaderNav.astro";
+
+const { subTitle = "ポートフォリオサイト", ogType = "website", ogTitle = subTitle, description = "埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで皆様の事業を加速します。", ogDescription = description , noContact = false, noIndex = false } = Astro.props;
+const logo = "/assets/images/global/logo.svg";
+const footerNavJson = [
+  { href: '/', label: 'ホーム' },
+  { href: '/about', label: 'すずしかについて' },
+  { href: '/work/1', label: '制作実績' },
+  { href: '/price-voice', label: '料金/お客様の声' }
+];
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>埼玉県所沢市のホームページ制作者 鈴木孝浩(すずしか)｜{subTitle}</title>
+    <meta name="description" content={description}>
+
+    { noIndex && <meta name="robots" content="noindex"> }
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="public/favicon.ico">
+    <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="public/android-chrome-256x256.png">
+
+    <!-- ogp -->
+    <meta property="og:site_name" content="埼玉県所沢市のホームページ制作者 鈴木孝浩(すずしか)">
+    <meta property="og:url" content="サイトのURL">
+    <meta property="og:type" content={ogType}>
+    <meta property="og:title" content={ogTitle}>
+    <meta property="og:description" content={ogDescription}>
+    <meta property="og:image" content="/public/ogp.webp">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content={ogDescription}>
+    <meta name="twitter:image:src" content="/public/ogp.webp">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+
+    <!-- splide -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+    <!-- destyle.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.0/destyle.min.css">
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="header__container">
+        <!-- logo -->
+        <div class="header__logo" lang="en">
+          <a href="/">
+            <img src={logo} alt="Bell Dear Web Production" width="899" height="205" loading="eager" decoding="async">
+          </a>
+        </div><!-- /.header__logo -->
+
+        <div class="header__link">
+          <HeaderNav /><!-- コンポーネント HeaderNav.astroを出力 -->
+          <div class="header__contact">
+            <a href="/contact">お問い合わせ</a>
+          </div><!-- /.header__contact -->
+        </div><!-- /.header__link -->
+
+        <!-- hamburger icon -->
+        <div class="header__hamburger">
+          <button type="button" class="c-hamburger">
+            <span class="u-sr-only">メニュー</span>
+          </button>
+        </div><!-- /.header__hamburger -->
+      </div><!-- /.header__container -->
+    </header>
+
+    <slot /><!-- レイアウトファイルに特有のタグ：ここにLayout.astroの読み込み先の本文をはめ込む -->
+
+    <!-- contact -->
+    { !noContact && (
+      <section class="l-contact">
+        <div class="l-container">
+          <div class="l-contact__title">
+            <div class="c-title">
+              <h2 class="c-title__ja c-title__ja--contact">お問い合わせ</h2>
+              <span class="c-title__en" aria-hidden="true">Contact</span>
+            </div>
+          </div>
+          <div class="l-contact__content l-section-body">
+            <p class="l-contact__lead">Webサイト制作／コーディング代行</p>
+            <p class="l-contact__text">ご相談やお見積もりなど<br class="u-no-pc">お気軽にお問い合わせください。</p>
+          </div>
+          <a href="/contact" class="l-contact__button">お問い合わせはこちら</a>
+        </div>
+      </section>
+    )}
+    <!-- footer -->
+    <footer class="footer">
+      <div class="l-container">
+        <div class="footer__content">
+          <div class="footer__logo">
+            <img src={logo} alt="Bell Dear Web Production" width="899" height="205" loading="lazy" decoding="async">
+          </div><!-- /.footer__logo -->
+          <div class="footer__rightside">
+            <ul class="footer__nav">
+              {footerNavJson.map((footerNavJson_item) =>
+                <li class="footer__nav-item"><a href={footerNavJson_item.href}>{footerNavJson_item.label}</a></li>
+              )}
+            </ul>
+            <div class="footer-link">
+              <a href="/contact" class="l-contact__button l-contact__button--footer">お問い合わせ</a>
+              <ul class="footer__sns">
+                <li class="footer__snsItem">
+                  <a href="https://x.com/suzu_taka_web" target="_blank" rel="noopener">
+                    <img src="/assets/images/global/icon-x.svg" alt="X(Twitter)" width="20" height="19" loading="lazy" decoding="async">
+                  </a>
+                </li>
+                <li class="footer__snsItem">
+                  <a href="https://www.facebook.com/takahiro.suzuki.3382118" target="_blank" rel="noopener">
+                    <img src="/assets/images/global/icon-facebook.svg" alt="Facebook" width="20" height="20" loading="lazy" decoding="async">
+                  </a>
+                </li>
+                <li class="footer__snsItem">
+                  <a href="" class="u-disabled-link">
+                    <img src="/assets/images/global/icon-instagram.svg" alt="Instagram" width="20" height="20" loading="lazy" decoding="async">
+                  </a>
+                </li>
+              </ul>
+            </div><!-- /.footer-link -->
+          </div><!-- /.footer__rightside -->
+        </div><!-- /.footer__content -->
+        <div class="footer__copyright">
+          <small>&copy; 2024 Bell Dear Web Production</small>
+        </div><!-- /.footer__copyright -->
+      </div><!-- /.l-container -->
+    </footer>
+
+    <div class="back-to-top">
+      <a href="#" aria-label="ページトップへ戻る">トップへ</a>
+    </div><!-- /.back-to-top -->
+
+    <script>
+      // hamburger menu
+      document.addEventListener("DOMContentLoaded", function () {
+        const html = document.querySelector("html");
+        const hamburger = document.querySelector(".c-hamburger");
+        const headerNav = document.querySelector("#js-nav");
+        const headerContactLink = document.querySelector('.header__contact a');
+        const headerLogoImage = document.querySelector('.header__logo img');
+
+        hamburger.addEventListener("click", () => {
+          html.classList.toggle("is-active");
+          hamburger.classList.toggle("is-active");
+          headerNav.classList.toggle("is-active");
+          headerContactLink.classList.toggle('is-active');
+          headerLogoImage.classList.toggle('is-active');
+        });
+
+        headerNav.addEventListener("click", () => {
+          html.classList.remove("is-active");
+          hamburger.classList.remove("is-active");
+          headerNav.classList.remove("is-active");
+          headerContactLink.classList.remove('is-active');
+          headerLogoImage.classList.remove('is-active');
+        });
+      });
+
+      // スクロール時にボタンを表示/非表示にする
+      window.addEventListener('scroll', function() {
+        const button = document.querySelector('.back-to-top');
+        if (window.scrollY > 200) { // スクロール位置が200pxを超えたら表示
+            button.classList.add('show');
+        } else {
+            button.classList.remove('show');
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+    /* component > hamburger
+  ----------------------------------- */
+  .c-hamburger {
+    position: relative;
+    box-sizing: content-box;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    width: calc(40 var(--vw-sp));
+    height: inherit;
+    color: var(--color-main);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(50% + 7.5px);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 20px;
+      height: 1px;
+      border-radius: 20px;
+      background-color: currentColor;
+      transition: 0.3s ease-in-out;
+    }
+
+    &::before {
+      top: calc(50% - 7.5px);
+      box-shadow: 0 7.5px currentColor;
+    }
+
+    // 閉じるボタン
+    &.is-active::before,
+    &.is-active::after {
+      top: 35px;
+      left: calc(50% - 10px);
+      background-color: var(--color-base);
+    }
+
+    &.is-active::before {
+      transform: rotate(225deg);
+      box-shadow: none;
+    }
+
+    &.is-active::after {
+      transform: rotate(-225deg);
+    }
+  }
+
+  // SP用 スクロール防止の設定
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  html.is-active,
+  .is-active body {
+    height: 100%;
+    overflow: hidden; // オーバーレイの高さを100vhにすると、iOSやAndroidではブラウザのアドレスバーの分だけ大きくなり、スクロールが発生する。このスクロールを防ぐための設定。
+  }
+
+  .is-active form {
+    display: none; // iOS 12.xでスクロールを禁止する設定が機能しないのを回避するための<form>要素の設定。
+  }
+
+  /* layout > header
+  ----------------------------------- */
+  .header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    background-color: rgb(245 243 235 / 0.95);
+  }
+
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(319 var(--vw-sp));
+    height: inherit;
+    margin: auto;
+  }
+
+  .header__logo {
+    position: relative;
+    z-index: 100;
+
+    img {
+      width: 110px;
+      filter: invert(29%) sepia(8%) saturate(10%) hue-rotate(132deg) brightness(96%) contrast(96%);
+      transition: filter 0.6s;
+
+      &.is-active {
+        filter: invert(97%) sepia(9%) saturate(437%) hue-rotate(351deg) brightness(107%) contrast(92%);
+      }
+    }
+  }
+
+  .header__contact {
+    position: relative;
+    z-index: 100;
+    margin-right: calc(36 var(--vw-sp));
+
+    a {
+      padding: 0 8px 2px;
+      border: 1px solid var(--color-main);
+      background-color: var(--color-main);
+      color: #f6f6f3;
+      font-size: clamp(14px, calc(16 var(--vw-pc)), 16px);
+      transition: border-color 0.6s, background-color 0.6s, color 0.6s;
+
+      &.is-active {
+        border-color: var(--color-base);
+        background-color: var(--color-base);
+        color: var(--color-main);
+      }
+    }
+  }
+
+  .header__hamburger {
+    position: absolute;
+    top: 0;
+    right: calc(18 var(--vw-sp));
+    z-index: 100;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 850px) {
+    .header {
+      height: 100px;
+    }
+
+    .header__container {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6px;
+      width: 100%;
+      max-width: calc(var(--width-content) + 80px * 2);
+      padding: 9px 80px 0;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+
+      &::before,
+      &::after {
+        content: "";
+        width: calc(640 var(--vw-pc));
+        height: 1px;
+        border-radius: 20px;
+        background-color: var(--color-main);
+      }
+
+      & a {
+        flex: 0 0 calc(110px + 15px * 2);
+        display: block;
+        padding: 8px 15px;
+      }
+    }
+
+    .header__link {
+      display: flex;
+      align-items: center;
+    }
+
+    .header__contact {
+      margin-right: 0;
+      margin-left: 20px;
+      transition: background-color 0.3s, color 0.3s;
+
+      & a:hover {
+        background-color: var(--color-base);
+        color: var(--color-main);
+      }
+    }
+
+    .header__hamburger {
+      display: none;
+    }
+  }
+
+  /* layout > l-contact
+  ----------------------------------- */
+  .l-contact {
+    padding: 40px 0;
+    margin-top: 80px;
+    background-color: var(--color-main);
+  }
+
+  .l-contact__content {
+    display: grid;
+    gap: 0.6em;
+    padding-left: 0.15em;
+    color: var(--color-base);
+    font-size: 16px;
+    font-size: min(16px, calc(16 var(--vw-sp)));
+    letter-spacing: 0.15em;
+    text-align: center;
+  }
+
+  .l-contact__button {
+    position: relative;
+    display: block;
+    width: fit-content;
+    padding: 12px 39px 13px;
+    border: 1px solid currentColor;
+    margin: 80px auto 0;
+    color: var(--color-base);
+    font-size: 16px;
+    font-weight: 700;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -30px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 1px;
+      background-color: currentColor;
+    }
+
+    &--footer {
+      padding: 9px calc(24 / 320 * 100vw) 10px;
+      margin: 8px 0 0;
+      color: var(--color-main);
+      font-size: 14px;
+
+      @media screen and (min-width: 375px) {
+        padding: 9px 40px 10px;
+      }
+
+      &::before {
+        left: calc(-18 / 320 * 100vw);
+        width: calc(36 / 320 * 100vw);
+
+        @media screen and (min-width: 375px) {
+          left: -30px;
+          width: 60px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 850px) {
+    .l-contact {
+      padding: 86px 0;
+      margin-top: 240px;
+      background-color: var(--color-main);
+    }
+
+    .l-contact__content {
+      font-size: 20px;
+    }
+
+    .l-contact__button {
+      padding: 9px 39px 10px;
+      font-size: 20px;
+
+      &::before {
+        transition: left 0.3s;
+      }
+
+      &:hover::before {
+        left: -45px;
+      }
+
+      &--footer {
+        padding: 9px 39.5px 10px;
+      }
+    }
+  }
+
+  /* layout > footer
+  ----------------------------------- */
+  .footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__logo {
+    text-align: center;
+
+    img {
+      width: 220px;
+    }
+  }
+
+  .footer__rightside {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer__nav {
+    display: grid;
+  }
+
+  .footer__nav-item {
+    a {
+      display: block;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+  }
+
+  .footer__sns {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 62px;
+  }
+
+  .footer__snsItem {
+    a {
+      padding: 8px;
+    }
+
+    img {
+      width: 20px;
+      filter: invert(26%) sepia(6%) saturate(7%) hue-rotate(72deg) brightness(101%) contrast(87%);
+    }
+  }
+
+  .footer__copyright {
+    margin-top: 32px;
+    text-align: center;
+
+    small {
+      display: block;
+      padding-left: 0.15em;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  @include mq() {
+    .footer {
+      padding: 47px 0 27px;
+    }
+
+    .footer__content {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+    }
+
+    .footer__logo {
+      padding-top: 8px;
+
+      img {
+        width: clamp(200px, calc(220 var(--vw-pc)), 220px);
+      }
+    }
+
+    .footer__rightside {
+      gap: min(112px, calc(112 var(--vw-pc)));
+    }
+
+    .footer__nav-item {
+      a {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background-color: currentColor;
+          transition: width 0.3s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .footer__sns {
+      justify-content: center;
+    }
+
+    .footer__snsItem {
+      a {
+        img {
+          transition: filter 0.3s;
+        }
+
+        &:hover img {
+          filter: invert(87%) sepia(10%) saturate(460%) hue-rotate(17deg) brightness(80%) contrast(87%);
+        }
+      }
+    }
+  }
+
+  /* layout > back-to-top
+  ----------------------------------- */
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    display: none;
+
+    &.show { // スクロールすると
+      display: block; // 表示
+      opacity: 1; // 不透明に
+      transform: translateY(0); // 元の位置に
+    }
+
+    & a {
+      position: relative;
+      display: block;
+      width: 60px;
+      height: 60px;
+      padding-top: 7px;
+      background-color: rgb(75 75 75 / 0.9);
+      color: var(--color-base);
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    & a::before {
+      content: "";
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      translate: -50%;
+      width: 28px;
+      height: 28px;
+      background-image: url(/assets/images/global/icon-chevron-double-up@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+
+  @include mq() {
+    .back-to-top {
+      a {
+        transition: opacity 0.3s;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+</style>

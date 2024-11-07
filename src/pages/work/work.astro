@@ -1,0 +1,279 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TitleLevel2 from '../../components/TitleLevel2.astro';
+
+// microCMS呼び出し
+import { getWorks } from '../../library/microcms';
+
+// getWorks() 関数で一覧データを取得
+const data = await getWorks({ limit: 100 });
+const works = data.contents;
+---
+
+<!-- work -->
+<Layout subTitle="制作実績">
+  <main class="work-main">
+    <h1 class="work-heading">
+      <TitleLevel2 titleJapanese="制作実績" titleEnglish="Work" />
+    </h1>
+
+    <!-- work-list -->
+    <div class="l-container">
+      <div class="work-list">
+        {works.map((content) => {
+          return (
+          <section class="work-list__item" key={content.id}>
+            <a href={content.url} target="_blank" class="work-list__head">
+              <div class="work-list__heading">
+                <h2 class="work-list__title-level2">{content.title}</h2>
+                <span class={`work-list__category work-list__category--${content.category} u-uppercase`}>{content.category}</span>
+              </div><!-- /.work-list__heading -->
+              <div class="work-list__image">
+                <img src={content.image.url} alt={content.alt_text} loading="lazy" decoding="async" width="457" height="271">
+              </div><!-- /.work-list__image -->
+            </a><!-- /.work-list__head -->
+            <div class="work-list__commitment">
+              <h3 class="work-list__title-level3">こだわり</h3>
+              <p class="work-list__description">{content.commitment}</p>
+            </div><!-- /.work-list__commitment -->
+            <div class="work-list__tools">
+              <h3 class="work-list__title-level3">使用言語・ツール</h3>
+              <ul class="work-list__tools-list">
+                {content.tools.map((tool) => {
+                  return (
+                  <li class="work-list__tools-item">{tool}</li>
+                  );
+                })}
+              </ul>
+            </div><!-- /.work-list__tools -->
+            <div class="work-list__share">
+              <h3 class="work-list__title-level3">制作範囲</h3>
+              <dl class="work-list__def">
+                <dt class="work-list__term">ディレクション</dt>
+                <dd class="work-list__desc">{content.director}</dd>
+              </dl>
+              <dl class="work-list__def">
+                <dt class="work-list__term">ライティング</dt>
+                <dd class="work-list__desc">{content.writer}</dd>
+              </dl>
+              <dl class="work-list__def">
+                <dt class="work-list__term">デザイン</dt>
+                <dd class="work-list__desc">{content.designer}</dd>
+              </dl>
+              <dl class="work-list__def">
+                <dt class="work-list__term">コーディング</dt>
+                <dd class="work-list__desc">{content.coder}</dd>
+              </dl>
+            </div><!-- /.work-list__share -->
+          </section>
+          );
+        })}
+      </div><!-- /.work-list -->
+    </div><!-- /.l-container -->
+
+  </main>
+</Layout>
+
+<style lang="scss">
+  @use '../../styles/breakpoints' as *;
+
+  .work-main {
+    margin-top: 132px;
+
+    @include mq() {
+      margin-top: 141px;
+    }
+  }
+
+  /* page > work > work-list
+  ----------------------------------- */
+  .work-list {
+    display: grid;
+    gap: 120px;
+    max-width: 450px;
+    margin: 91px auto 0;
+  }
+
+  .work-list__item {
+
+  }
+
+  .work-list__head {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 43px;
+  }
+
+  .work-list__heading {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .work-list__title-level2 {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: none;
+  }
+
+  .work-list__category {
+    width: 48px;
+    height: 28px;
+    border-radius: 5px;
+    margin-top: 1px;
+    color: var(--color-base);
+    text-align: center;
+
+    &--hp {
+      background-color: var(--color-yellow);
+    }
+
+    &--lp {
+      background-color: var(--color-green);
+    }
+  }
+
+  .work-list__image {
+    text-align: center;
+
+    img {
+      width: 250px;
+    }
+  }
+
+  .work-list__title-level3 {
+    display: grid;
+    gap: 3px;
+    font-size: 20px;
+    font-weight: 700;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      margin-bottom: 5px;
+      background-color: currentColor;
+    }
+  }
+
+  .work-list__commitment {
+    margin-top: 49px;
+  }
+
+  .work-list__description {
+
+  }
+
+  .work-list__tools {
+    margin-top: 20px;
+  }
+
+  .work-list__tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1em;
+  }
+
+  .work-list__tools-item {
+
+  }
+
+  .work-list__share {
+    margin-top: 20px;
+  }
+
+  .work-list__def {
+    display: flex;
+    gap: 1em;
+  }
+
+  .work-list__term {
+    position: relative;
+    flex: 0 0 97px;
+    font-weight: 400;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -0.5em;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 10px;
+      background-image: url(/public/assets/images/work/text-work-colon@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+
+  .work-list__desc {
+
+  }
+
+  @include mq() {
+    .work-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 120px 50px;
+      max-width: 100%;
+      margin: 140px auto 0;
+    }
+
+    .work-list__item {
+
+    }
+
+    .work-list__heading {
+      height: 58px;
+    }
+
+    .work-list__image {
+
+      img {
+        width: 100%;
+        transition: scale 0.5s;
+
+        .work-list__head:hover & {
+          scale: 1.05;
+        }
+      }
+    }
+
+    .work-list__commitment {
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .work-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .pagination a {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .pagination a.active {
+    background-color: #333;
+    color: white;
+  }
+
+  .pagination a:hover {
+    background-color: #f0f0f0;
+  }
+</style>

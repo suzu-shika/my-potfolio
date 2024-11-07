@@ -1,0 +1,212 @@
+---
+// microCMS呼び出し
+import { getKeyVisuals } from '../library/microcms';
+const responseKeyVisual = await getKeyVisuals({ fields: ["id", "image_sp", "alt_text_sp", "image_pc_1", "alt_text_pc_1", "image_pc_2", "alt_text_pc_2", "order"] });
+
+// orderフィールドに基づいてソートする（昇順に並べる）
+const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.order);
+---
+
+<div class="c-top-kv">
+  <div class="c-top-kv__content l-container">
+    <h1 class="c-top-kv__title-lv1"><span class="u-sr-only">ウェブコーダー鈴木孝浩</span>当たり前のことを当たり前に、<br>無骨なまでに貫く。</h1>
+    <!-- splide slider1-sp -->
+    <div class="splide slider1-sp c-top-kv__sp-slider u-no-pc" role="group" aria-label="キービジュアル">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {responseKeyVisual.contents.map((content) => {
+            return (
+            <li class="splide__slide c-top-kv__sp-slide">
+              <img src={content.image_sp.url} alt={content.alt_text_sp} loading="eager" decoding="async" width="457" height="271">
+            </li>
+            );
+          })}
+        </ul>
+      </div><!-- /.splide__track -->
+    </div><!-- /.splide.slider1-sp.c-top-kv__sp-slider -->
+
+    <!-- splide slider1-pc -->
+    <div class="splide slider1-pc c-top-kv__pc-slider u-no-sp" role="group" aria-label="キービジュアル">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {responseKeyVisual.contents.map((content) => {
+            return (
+            <li class="splide__slide c-top-kv__pc-slide">
+              <div class="c-top-kv__pc-image">
+                <img src={content.image_pc_1.url} alt={content.alt_text_pc_1} loading="eager" decoding="async" width="457" height="271">
+              </div><!-- /.c-top-kv__pc-image -->
+              <div class="c-top-kv__pc-image">
+                <img src={content.image_pc_2.url} alt={content.alt_text_pc_2} loading="eager" decoding="async" width="457" height="271">
+              </div><!-- /.c-top-kv__pc-image -->
+            </li>
+            );
+          })}
+        </ul>
+      </div><!-- /.splide__track -->
+    </div><!-- /.splide.slider1-pc.c-top-kv__pc-slider -->
+
+    <p class="c-top-kv__text">
+      <span>コーダーすずしかの</span>
+      <span>ポートフォリオサイト</span>
+    </p>
+  </div><!-- /.c-top-kv__content -->
+</div><!-- /.c-top-kv -->
+
+<script>
+  // slider1-sp - splide
+  new Splide('.slider1-sp', {
+    focus: 0,
+    autoplay: true,
+    type: "fade",
+    interval: 5000,
+    speed: 2000,
+    rewind: true,
+    arrows: false,
+    classes: {
+      pagination: "splide__pagination c-top-kv__sp-pagination",
+      page: "splide__pagination__page c-top-kv__sp-page",
+    },
+  }).mount();
+
+  // slider1-pc - splide
+  new Splide('.slider1-pc', {
+    focus: 0,
+    autoplay: true,
+    type: "fade",
+    interval: 5000,
+    speed: 2000,
+    rewind: true,
+    arrows: false,
+    classes: {
+      pagination: "splide__pagination c-top-kv__pc-pagination",
+      page: "splide__pagination__page c-top-kv__pc-page",
+    },
+  }).mount();
+</script>
+
+<style is:global lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  .c-top-kv {
+    margin-top: 68px;
+  }
+
+  .c-top-kv__content {
+    position: relative;
+    padding-top: 77px;
+  }
+
+  .c-top-kv__title-lv1 {
+    width: fit-content;
+    margin: auto;
+    font-size: 16px;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.437em;
+    line-height: 3;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      translate: -50%;
+      width: 120px;
+      height: 118px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+
+    &::before {
+      top: -10px;
+      left: calc(50% + 70px);
+      background-image: url(/public/assets/images/kv/bg-kv-symbol-circle-sp@2x.webp);
+    }
+
+    &::after {
+      top: 292px;
+      left: calc(50% - 67px);
+      background-image: url(/public/assets/images/kv/bg-kv-symbol-pentagon-sp@2x.webp);
+    }
+  }
+
+
+  // slider1-sp
+  .c-top-kv__sp-slider {
+    padding: 0 calc(54 var(--vw-sp));
+    margin-top: 30px;
+  }
+
+  .c-top-kv__sp-pagination {
+    display: none;
+  }
+
+  .c-top-kv__text {
+    display: grid;
+    gap: 5px;
+    padding-left: 0.5em;
+    margin-top: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    text-align: center;
+
+    span:last-child {
+      font-size: 17px;
+    }
+  }
+
+  @include mq() {
+    .c-top-kv {
+      height: 632px;
+      margin-top: 100px;
+    }
+
+    .c-top-kv__content {
+      position: relative;
+      padding-top: 132px;
+    }
+
+    .c-top-kv__title-lv1 {
+      font-size: 20px;
+      letter-spacing: 0.445em;
+      line-height: 2.43;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+
+    // slider1-pc
+    .slider1-pc {
+      position: absolute;
+      top: 222px;
+      left: 50%;
+      translate: -50%;
+      width: 100%;
+      padding: 0 min(110px, calc(110 var(--vw-pc)));
+    }
+
+    .c-top-kv__pc-slide {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: min(224px, calc(224 var(--vw-pc)));
+    }
+
+    .c-top-kv__pc-pagination {
+      display: none;
+    }
+
+    .c-top-kv__text {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 75px;
+
+      span:last-child {
+        font-size: 14px;
+      }
+    }
+  }
+</style>

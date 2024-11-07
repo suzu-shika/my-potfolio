@@ -1,0 +1,308 @@
+---
+// microCMS呼び出し
+import { getWorks } from '../library/microcms';
+const responseWork = await getWorks({ fields: ["id", "title", "sub_title", "image", "alt_text", "commitment", "tools", "director", "writer", "designer", "coder", "order"]});
+
+// orderフィールドに基づいてソートする（昇順に並べる）
+const sortedContents = responseWork.contents.sort((a, b) => a.order - b.order);
+---
+
+<!-- splide slider2 -->
+<div class="splide slider2 c-work-slider" role="group" aria-label="制作実績の紹介(スライダー)">
+  <div class="splide__track">
+    <ul class="splide__list">
+      {sortedContents.slice(0, 6).map(content => (
+        <li class="splide__slide c-work-slider__slide">
+          <h3 class="c-work-slider__title-level3">{content.title}<br class="u-no-pc">（{content.sub_title}）</h3>
+          <div class="c-work-slider__content">
+            <div class="c-work-slider__image">
+              <img src={content.image.url} alt={content.alt_text} width="457" height="271" loading="lazy" decoding="async">
+            </div><!-- /.c-work-slider__image -->
+            <div class="c-work-slider__description">
+              <div class="c-work-slider__commitment">
+                <h4 class="c-work-slider__title-level4">こだわり</h4>
+                <p class="c-work-slider__commitment-text">{content.commitment}</p>
+              </div><!-- /.c-work-slider__head -->
+              <div class="c-work-slider__meta">
+                <div class="c-work-slider__tools">
+                  <h4 class="c-work-slider__title-level4">言語・ツール</h4>
+                  <ul class="c-work-slider__list">
+                    {content.tools.map(tool => (
+                      <li class="c-work-slider__item">{tool}</li>
+                    ))}
+                  </ul>
+                </div><!-- /.c-work-slider__tools -->
+                <div class="c-work-slider__share">
+                  <h4 class="c-work-slider__title-level4">制作範囲</h4>
+                  <dl class="c-work-slider__def">
+                    <dt class="c-work-slider__term">ディレクション</dt>
+                    <dd class="c-work-slider__desc">{content.director}</dd>
+                  </dl>
+                  <dl class="c-work-slider__def">
+                    <dt class="c-work-slider__term">ライティング</dt>
+                    <dd class="c-work-slider__desc">{content.writer}</dd>
+                  </dl>
+                  <dl class="c-work-slider__def">
+                    <dt class="c-work-slider__term">デザイン</dt>
+                    <dd class="c-work-slider__desc">{content.designer}</dd>
+                  </dl>
+                  <dl class="c-work-slider__def">
+                    <dt class="c-work-slider__term">コーディング</dt>
+                    <dd class="c-work-slider__desc">{content.coder}</dd>
+                  </dl>
+                </div><!-- /.c-work-slider__share -->
+              </div><!-- /.c-work-slider__meta -->
+            </div><!-- /.c-work-slider__description -->
+          </div><!-- /.c-work-slider__content -->
+        </li>
+      ))}
+    </ul>
+  </div><!-- /.splide__track -->
+  <div class="splide__arrows">
+    <button class="splide__arrow splide__arrow--prev c-work-slider__button c-work-slider__prev"></button>
+    <button class="splide__arrow splide__arrow--next c-work-slider__button c-work-slider__next"></button>
+  </div>
+</div><!-- /.splide.slider2.c-work__slider -->
+
+<script>
+  // slider2 - splide
+  new Splide('.slider2', {
+    focus: 0,
+    autoplay: true,
+    // type: "loop",
+    type: "fade",
+    interval: 8000,
+    speed: 2000,
+    rewind: true,
+    // arrows: false,
+    classes: {
+      pagination: "splide__pagination c-worker-slider__pagination",
+      page: "splide__pagination__page c-worker-slider__page",
+    },
+  }).mount();
+</script>
+
+<style is:global lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-work-slider
+  ----------------------------------- */
+  .c-work-slider {
+    padding: 30px 25px;
+    border-radius: 40px;
+    background-color: var(--color-white);
+  }
+
+  .c-work-slider__title-level3 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .c-work-slider__content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-top: 20px;
+  }
+
+  .c-work-slider__image {
+    text-align: center;
+
+    img {
+      width: 214px;
+      margin: auto;
+    }
+  }
+
+  .c-work-slider__title-level4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid currentColor;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .c-work-slider__commitment-text {
+    margin-top: 10px;
+    text-align: justify;
+  }
+
+  .c-work-slider__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .c-work-slider__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9em;
+    margin-top: 10px;
+  }
+
+  .c-work-slider__def {
+    display: flex;
+    gap: 1em;
+
+    &:first-of-type {
+      margin-top: 10px;
+    }
+  }
+
+  .c-work-slider__term {
+    position: relative;
+    flex: 0 0 97px;
+    font-weight: 400;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -0.5em;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 10px;
+      background-image: url(/public/assets/images/work/text-work-colon@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+
+  // arrows
+  .c-work-slider__button {
+    background-color: var(--color-accent);
+    width: 20px;
+    height: 120px;
+    border-radius: 40px;
+    transition: 0.3s;
+
+    &::before {
+      content: "";
+      width: 8px;
+      height: 18.67px;
+      background-image: url(/public/assets/images/work/icon-work-arrow@2x.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+
+  .c-work-slider__prev {
+    left: -12.5px;
+  }
+
+  .c-work-slider__next {
+    right: -12.5px;
+
+    &::before {
+      transform: rotate(180deg);
+    }
+  }
+
+  // pagination
+  .c-worker-slider__pagination {
+    bottom: calc(-30px + -40px);
+    padding: 0;
+    z-index: 10;
+  }
+
+  .c-worker-slider__page {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    border: 1px solid currentColor;
+    background-color: transparent;
+    opacity: 1;
+
+    &.is-active {
+      background-color: #edc70a;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (min-width: 930px) {
+    .c-work-slider {
+      padding: 80px 50px;
+    }
+
+    .c-work-slider__title-level3 {
+      font-size: 24px;
+    }
+
+    .c-work-slider__content {
+      flex-direction: row;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .c-work-slider__image {
+      flex: 0 0 min(457px, calc(457 var(--vw-pc)));
+
+      img {
+        width: min(457px, calc(457 var(--vw-pc)));
+      }
+    }
+
+    .c-work-slider__commitment-text {
+      margin-top: 5px;
+      line-height: 2;
+    }
+
+    .c-work-slider__meta {
+      flex-direction: row;
+      gap: 40px;
+      gap: min(40px, calc(40 var(--vw-pc)));
+      margin-top: 40px;
+    }
+
+    .c-work-slider__tools {
+      flex: 1 1 auto;
+    }
+
+    .c-work-slider__list {
+      flex-direction: column;
+      gap: 0;
+      margin-top: 5px;
+    }
+
+    .c-work-slider__share {
+      width: calc((100% - 40px) / 2);
+      flex: 0 0 clamp(180px, calc(231.5 var(--vw-pc)) ,231.5px);
+    }
+
+    .c-work-slider__def {
+      display: flex;
+      gap: 1em;
+
+      &:first-of-type {
+        margin-top: 5px;
+      }
+    }
+
+    .c-work-slider__term {
+      position: relative;
+      flex: 0 0 97px;
+      font-weight: 400;
+    }
+
+    // arrows
+    .c-work-slider__button {
+      width: 40px;
+    }
+
+    .c-work-slider__button::before {
+      width: 12px;
+      height: 28px;
+    }
+
+    .c-work-slider__prev {
+      left: -20px;
+    }
+
+    .c-work-slider__next {
+      right: -20px;
+    }
+  }
+</style>

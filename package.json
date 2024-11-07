@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-astro-03",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.7",
+    "microcms-js-sdk": "^3.1.2"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.80.5"
+  }
+}

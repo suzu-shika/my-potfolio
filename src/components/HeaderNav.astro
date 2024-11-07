@@ -1,0 +1,197 @@
+---
+// JSON
+const navJson = [
+  {
+    href: '/',
+    label: 'ホーム'
+  },
+  {
+    href: '/about',
+    label: 'すずしかについて'
+  },
+  {
+    href: '/#skills',
+    label: 'スキル'
+  },
+  {
+    href: '/work/1',
+    label: '制作実績'
+  },
+  {
+    href: '/#workflow',
+    label: '制作の流れ'
+  },
+  {
+    href: '/price-voice',
+    label: '料金/お客様の声'
+  }
+]
+
+// Get the current path
+const currentPath = Astro.url.pathname;
+---
+
+<!-- navigation -->
+<nav class="c-header-nav c-g-nav" id="js-nav">
+  <div class="c-g-nav__inner">
+    <ul class="c-g-nav__list">
+      {navJson.map((navJson_item) =>
+        <li class="c-g-nav__item">
+          <a href={navJson_item.href} class={currentPath === navJson_item.href ? 'active' : ''}>{navJson_item.label}</a>
+        </li>
+      )}
+    </ul>
+    <div class="c-g-nav__sns">
+      <ul class="c-g-nav__sns-list">
+        <li class="c-g-nav__sns-item">
+          <a href="https://x.com/suzu_taka_web" target="_blank" rel="noopener">
+            <img src="/assets/images/global/icon-x.svg" alt="X(Twitter)" width="20" height="19" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li class="c-g-nav__sns-item">
+          <a href="https://www.facebook.com/takahiro.suzuki.3382118" target="_blank" rel="noopener">
+            <img src="/assets/images/global/icon-facebook.svg" alt="Facebook" width="20" height="20" loading="lazy" decoding="async">
+          </a>
+        </li>
+        <li class="c-g-nav__sns-item">
+          <a href="" class="u-disabled-link">
+            <img src="/assets/images/global/icon-instagram.svg" alt="Instagram" width="20" height="20" loading="lazy" decoding="async">
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.c-g-nav__sns -->
+  </div><!-- /.c-g-nav__inner -->
+</nav>
+
+<style lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-header-nav
+  ----------------------------------- */
+  .c-header-nav {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 68px;
+    background-color: transparent;
+    opacity: 0;
+    transition: 0.6s;
+
+    &.is-active {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: var(--color-main);
+      opacity: 1;
+      transition: 0.6s;
+    }
+  }
+
+  @media screen and (min-width: 850px) {
+    .c-header-nav {
+      position: static;
+      justify-content: space-between;
+      width: auto;
+      height: auto;
+      padding-top: 0;
+      opacity: initial;
+    }
+  }
+
+  /* component > c-g-nav
+  ----------------------------------- */
+  .c-g-nav {
+    text-align: center;
+  }
+
+  .c-g-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .c-g-nav__item {
+    position: relative;
+    width: 100%;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 10px 60px;
+      color: var(--color-base);
+      font-size: 20px;
+
+      &.active {
+        // Hide underline on mobile
+        border-bottom: none;
+      }
+    }
+  }
+
+  .c-g-nav__sns {
+    margin-top: 70px;
+  }
+
+  .c-g-nav__sns-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .c-g-nav__sns-item {
+    img {
+      width: 24px;
+      filter: invert(97%) sepia(9%) saturate(437%) hue-rotate(351deg) brightness(107%) contrast(92%);
+    }
+  }
+
+  @media screen and (min-width: 850px) {
+    .c-g-nav__list {
+      flex-direction: row;
+      gap: 8px;
+      gap: clamp(4px, calc(8 var(--vw-pc)), 8px);
+      padding: 0;
+    }
+
+    .c-g-nav__item {
+      width: fit-content;
+
+      a {
+        position: relative;
+        padding: 8px clamp(8px, calc(12 var(--vw-pc)), 12px);
+        color: var(--color-main);
+        font-size: clamp(14px, calc(16 var(--vw-pc)), 16px);
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 4px;
+          left: clamp(8px, calc(12 var(--vw-pc)), 12px);
+          width: 0;
+          height: 1px;
+          background-color: currentColor;
+          transition: width 0.3s;
+        }
+
+        &:hover::after,
+        &.active::after {
+          width: calc(100% - clamp(8px, calc(12 var(--vw-pc)), 12px) * 2);
+        }
+      }
+    }
+
+    .c-g-nav__sns {
+      display: none;
+    }
+  }
+</style>

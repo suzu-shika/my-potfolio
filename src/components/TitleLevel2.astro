@@ -1,0 +1,47 @@
+---
+const { titleJapanese, titleEnglish } = Astro.props;
+---
+
+<div class="c-title">
+  <h2 class="c-title__ja">{titleJapanese}</h2>
+  <span class="c-title__en" aria-hidden="true">{titleEnglish}</span>
+</div><!-- /.c-title -->
+
+<style is:global lang="scss">
+  @use '../styles/_breakpoints.scss' as *;
+
+  /* component > c-title
+  ----------------------------------- */
+  .c-title {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  .c-title__ja {
+    padding-left: 0.5em;
+    font-size: 20px;
+    letter-spacing: 0.5em;
+
+    &--contact {
+      color: var(--color-base);
+    }
+  }
+
+  .c-title__en {
+    color: var(--color-accent);
+    font-size: 40px;
+  }
+
+  @include mq() {
+    .c-title__ja {
+      font-size: 24px;
+    }
+
+    .c-title__en {
+      font-size: 80px;
+    }
+  }
+</style>
