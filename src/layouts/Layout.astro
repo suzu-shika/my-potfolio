@@ -1,9 +1,7 @@
 ---
 import "../styles/style.scss";
 import HeaderNav from "../components/HeaderNav.astro";
-import { GA_MEASUREMENT_ID } from 'astro:env';
 
-const trackingId = GA_MEASUREMENT_ID;
 const { subTitle = "ポートフォリオサイト", ogType = "website", ogTitle = subTitle, description = "埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで皆様の事業を加速します。", ogDescription = description , noContact = false, noIndex = false } = Astro.props;
 const logo = "/assets/images/global/logo.svg";
 const footerNavJson = [
@@ -56,18 +54,15 @@ const footerNavJson = [
     <!-- destyle.css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.0/destyle.min.css">
 
-    <!-- Google Analytics -->
-    {trackingId && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`}></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){{dataLayer.push(arguments);}}
-          gtag('js', new Date());
-          gtag('config', '{trackingId}');
-        </script>
-      </>
-    )}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NCSR73BGS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4NCSR73BGS');
+    </script>
   </head>
 
   <body>
