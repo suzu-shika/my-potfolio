@@ -41,7 +41,8 @@ const sortedContentsSp = responseVoice.contents.sort((a, b) => a.order - b.order
             </ul><!-- /.c-accordion__title-link -->
           </div><!-- /.c-accordion__title-head -->
           <h3 class="c-accordion__title-text">
-            <span>{content.post}</span><span>{content.name}<span class="c-accordion__title-honorific">さん</span></span>
+            <span>{content.post}</span>
+            <span>{content.name}<span class="c-accordion__title-honorific">さん</span></span>
           </h3>
           <p class="c-accordion__title-lead">{content.excerpt}</p>
           <div class="c-accordion-title__icon"></div>
@@ -183,6 +184,7 @@ const sortedContentsSp = responseVoice.contents.sort((a, b) => a.order - b.order
 
   .c-accordion__title-text {
     display: flex;
+    flex-direction: column;
     gap: 0.25em;
     margin-top: 20px;
     font-size: min(20px, calc(20 var(--vw-sp)));
@@ -322,6 +324,7 @@ const sortedContentsSp = responseVoice.contents.sort((a, b) => a.order - b.order
     }
 
     .c-accordion__title-text {
+      flex-direction: row;
       margin: 2px 0 0 154px;
     }
 
