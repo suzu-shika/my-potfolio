@@ -98,12 +98,16 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
 
   .c-top-kv__title-lv1 {
     width: fit-content;
+    height: 322px;
     margin: auto;
     font-size: 16px;
     font-weight: 700;
     writing-mode: vertical-rl;
     letter-spacing: 0.437em;
     line-height: 3;
+    position: absolute;
+    right: 0;
+    left: 0;
 
     &::before,
     &::after {
@@ -118,13 +122,13 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
     }
 
     &::before {
-      top: -10px;
+      top: -87px;
       left: calc(50% + 70px);
       background-image: url(/assets/images/kv/bg-kv-symbol-circle-sp@2x.webp);
     }
 
     &::after {
-      top: 292px;
+      top: 215px;
       left: calc(50% - 67px);
       background-image: url(/assets/images/kv/bg-kv-symbol-pentagon-sp@2x.webp);
     }
@@ -134,7 +138,8 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
   // slider1-sp
   .c-top-kv__sp-slider {
     padding: 0 calc(54 var(--vw-sp));
-    margin-top: 30px;
+    // margin-top: 30px;
+    margin-top: 352px;
   }
 
   .c-top-kv__sp-pagination {
@@ -167,6 +172,7 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
     }
 
     .c-top-kv__title-lv1 {
+      height: 405px;
       font-size: 20px;
       letter-spacing: 0.445em;
       line-height: 2.43;
@@ -176,7 +182,6 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
         display: none;
       }
     }
-
 
     // slider1-pc
     .slider1-pc {
@@ -202,7 +207,7 @@ const sortedContentsSp = responseKeyVisual.contents.sort((a, b) => a.order - b.o
       display: flex;
       justify-content: center;
       gap: 0;
-      margin-top: 75px;
+      margin-top: 480px;
 
       span:last-child {
         font-size: 14px;
