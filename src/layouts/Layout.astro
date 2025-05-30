@@ -2,11 +2,11 @@
 import "../styles/style.scss";
 import HeaderNav from "../components/HeaderNav.astro";
 
-const { subTitle = "ポートフォリオサイト", ogType = "website", ogTitle = subTitle, description = "埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで皆様の事業を加速します。", ogDescription = description , noContact = false, noIndex = false } = Astro.props;
+const { subTitle = "ポートフォリオサイト", ogType = "website", ogTitle = subTitle, description = "埼玉県所沢市のホームページ制作者 鈴木孝浩のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで皆様の事業を加速します。", ogDescription = description , noContact = false, noIndex = false } = Astro.props;
 const logo = "/assets/images/global/logo.svg";
 const footerNavJson = [
   { href: '/', label: 'ホーム' },
-  { href: '/about', label: 'すずしかについて' },
+  { href: '/about', label: '私について' },
   { href: '/work/1', label: '制作実績' },
   { href: '/price-voice', label: '料金/お客様の声' }
 ];
@@ -17,7 +17,7 @@ const footerNavJson = [
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>埼玉県所沢市のホームページ制作者 鈴木孝浩(すずしか)｜{subTitle}</title>
+    <title>埼玉県所沢市のホームページ制作者 鈴木孝浩｜{subTitle}</title>
     <meta name="description" content={description}>
 
     <!-- Google Search Console -->
@@ -31,7 +31,7 @@ const footerNavJson = [
     <link rel="icon" type="image/png" href="/android-chrome-256x256.png">
 
     <!-- ogp -->
-    <meta property="og:site_name" content="埼玉県所沢市のホームページ制作者 鈴木孝浩(すずしか)">
+    <meta property="og:site_name" content="埼玉県所沢市のホームページ制作者 鈴木孝浩">
     <meta property="og:url" content="https://portfolio.suzu-shika.com">
     <meta property="og:type" content={ogType}>
     <meta property="og:title" content={ogTitle}>

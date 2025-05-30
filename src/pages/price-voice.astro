@@ -8,8 +8,8 @@ import Accordion from '../components/Accordion.astro';
 <!-- price-voice -->
 <Layout
   subTitle="料金 / お客様の声"
-  ogType="article"
-  description="埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）の料金の目安・お客様の声です。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで事業を加速します。"
+  ogType="website"
+  description="埼玉県所沢市のホームページ制作者 鈴木孝浩の料金の目安・お客様の声です。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで事業を加速します。"
 >
   <main class="price-voice-main">
     <div class="price-voice-heading">
@@ -44,7 +44,7 @@ import Accordion from '../components/Accordion.astro';
                     <img src="/assets/images/price-voice/icon-price-voice-sp-green@2x.webp" alt="" loading="lazy" decoding="async" width="80" height="80">
                   </div><!-- /.price__icon -->
                   <div class="price__description">
-                    <p class="price__text">税抜<span class="price__number">20</span>万円〜</p>
+                    <p class="price__text">税抜<span class="price__number">25</span>万円〜</p>
                   </div><!-- /.price__description -->
                 </li>
               </ul>
@@ -76,9 +76,9 @@ import Accordion from '../components/Accordion.astro';
                   </div><!-- /.price__description -->
                 </li>
               </ul>
+              <small class="price__note">※現在、コーディング代行業務は、Astro.jsでのサイト構築案件のみを請け負っております。</small>
             </section><!-- /.price__section -->
           </div><!-- /.price__sections -->
-          <p class="price__discount">制作実績公開の許諾と、納品後アンケートへのご回答をいただける場合、制作費の20%を割引きいたします。（コーディング代行・Webサイト制作ともに）</p>
         </div><!-- /.price-section-body.l-section-body -->
       </div><!-- /.l-container -->
     </section><!-- /.price -->
@@ -181,26 +181,20 @@ import Accordion from '../components/Accordion.astro';
     }
   }
 
+  .price__note {
+    display: block;
+    width: fit-content;
+    margin: 32px auto 0;
+    font-size: 12px;
+    text-align: justify;
+  }
+
   .price__lead {
     display: grid;
     gap: 1em;
     margin-top: 80px;
     font-size: 16px;
     text-align: justify;
-  }
-
-  .price__discount {
-    position: relative;
-    max-width: 520px;
-    padding-left: 1em;
-    margin: 80px auto 0;
-
-    &::before {
-      content: "※";
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
   }
 
   @media screen and (min-width: 375px) {

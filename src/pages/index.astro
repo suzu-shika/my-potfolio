@@ -10,7 +10,7 @@ import WorkSlider from '../components/WorkSlider.astro';
 <Layout
   subTitle="ポートフォリオサイト"
   ogType="website"
-  description="埼玉県所沢市のホームページ制作者 鈴木孝浩（すずしか）のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで事業を加速します。"
+  description="埼玉県所沢市のホームページ制作者 鈴木孝浩のポートフォリオサイトです。ホームページ・ランディングページの企画・制作から管理・運用まで、ワンストップで事業を加速します。"
 >
   <!-- top-kv -->
   <div class="top-kv">
@@ -23,7 +23,7 @@ import WorkSlider from '../components/WorkSlider.astro';
       <div class="l-container">
         <div class="l-section l-section--top-about">
           <div class="top-about__title">
-            <TitleLevel2 titleJapanese="すずしかについて" titleEnglish="About" />
+            <TitleLevel2 titleJapanese="私について" titleEnglish="About" />
           </div><!-- /.top-about__title -->
           <div class="top-about__content l-section-body">
             <p class="top-about__text">見えないところまで丁寧にこだわり<br>どんなユーザーにとっても心地よい<br>あなたの理想を形にするサイト制作</p>
@@ -139,7 +139,7 @@ import WorkSlider from '../components/WorkSlider.astro';
                   <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-contract"><span class="u-sr-only">ステップ2</span>ご契約</h4>
                   <p class="top-workflow__text">
                     <span>見積書・仕様確認書を事前に提示し、正式発注を承ります。</span>
-                    <span>制作費の全額または前金(着手金)をご入金いただきます。</span></p>
+                  </p>
                 </li>
                 <li class="top-workflow__item">
                   <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-hearing"><span class="u-sr-only">ステップ3</span>ライターヒアリング</h4>
@@ -165,7 +165,7 @@ import WorkSlider from '../components/WorkSlider.astro';
                 </li>
                 <li class="top-workflow__item">
                   <h4 class="top-workflow__title-level4 top-workflow__title-level4--website-delivery"><span class="u-sr-only">ステップ7</span>納品</h4>
-                  <p class="top-workflow__text">すべての工程が完了しましたら、残金がある場合は残金をご入金いただきます。</p>
+                  <p class="top-workflow__text">すべての工程が完了しましたら、制作費をご入金いただき、納品となります。</p>
                 </li>
               </ol>
             </section><!-- /.top-workflow__section -->
@@ -183,7 +183,7 @@ import WorkSlider from '../components/WorkSlider.astro';
                   <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-contract"><span class="u-sr-only">ステップ2</span>ご契約</h4>
                   <p class="top-workflow__text">
                     <span>見積書・仕様確認書を事前に提示し、正式発注を承ります。</span>
-                    <span>制作費の全額または前金(着手金)のご入金と、デザインデータを送付いただきます。</span>
+                    <span>デザインデータの送付をお願いいたします。</span>
                   </p>
                 </li>
                 <li class="top-workflow__item">
@@ -196,9 +196,10 @@ import WorkSlider from '../components/WorkSlider.astro';
                 </li>
                 <li class="top-workflow__item">
                   <h4 class="top-workflow__title-level4 top-workflow__title-level4--coding-delivery"><span class="u-sr-only">ステップ5</span>納品</h4>
-                  <p class="top-workflow__text">すべての工程が完了しましたら、残金がある場合は残金をご入金いただきます。</p>
+                  <p class="top-workflow__text">すべての工程が完了しましたら、制作費をご入金いただき、納品となります。</p>
                 </li>
               </ol>
+              <small class="top-workflow__note">※現在、コーディング代行業務は、Astro.jsでのサイト構築案件のみを請け負っております。</small>
             </section><!-- /.top-workflow__section -->
           </div><!-- /.top-workflow__content.l-section-body -->
         </div><!-- /.l-section -->
@@ -526,6 +527,13 @@ import WorkSlider from '../components/WorkSlider.astro';
     display: grid;
     gap: 10px;
     padding-left: 48px;
+    text-align: justify;
+  }
+
+  .top-workflow__note {
+    display: block;
+    margin-top: 32px;
+    font-size: 12px;
     text-align: justify;
   }
 
